@@ -1,0 +1,869 @@
+{
+  "name": "Nina",
+  "intents": [
+    {
+      "intent": "file_complaint",
+      "examples": [
+        {
+          "text": "I would like to file a complaint"
+        },
+        {
+          "text": "complaint"
+        },
+        {
+          "text": "I want to file a complaint"
+        },
+        {
+          "text": "There is a dog barking loud here"
+        },
+        {
+          "text": "I'd like to file a complaint"
+        }
+      ],
+      "description": "To file a complaint"
+    },
+    {
+      "intent": "greeting",
+      "examples": [
+        {
+          "text": "Hi"
+        },
+        {
+          "text": "Hello"
+        }
+      ],
+      "description": "To greet the user"
+    },
+    {
+      "intent": "security_info",
+      "examples": [
+        {
+          "text": "Can you please give me the phone of the security guard?"
+        },
+        {
+          "text": "I need to talk to the security guard"
+        }
+      ],
+      "description": "Retrieve the contact of security guard"
+    },
+    {
+      "intent": "pest_control",
+      "examples": [
+        {
+          "text": "I would like to schedule a visit of the pest control company"
+        }
+      ],
+      "description": "To request a visit of the pest control company"
+    },
+    {
+      "intent": "yes",
+      "examples": [
+        {
+          "text": "yep"
+        },
+        {
+          "text": "yes"
+        },
+        {
+          "text": "correct"
+        },
+        {
+          "text": "please do"
+        }
+      ],
+      "description": "User confirmation"
+    },
+    {
+      "intent": "list_options",
+      "examples": [
+        {
+          "text": "What is available?"
+        },
+        {
+          "text": "How helpful are you?"
+        },
+        {
+          "text": "list my options"
+        },
+        {
+          "text": "what I can do?"
+        },
+        {
+          "text": "what can you help with"
+        },
+        {
+          "text": "What are my options?"
+        },
+        {
+          "text": "What services are available?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "hoa_fees",
+      "examples": [
+        {
+          "text": "I would like to know more about our condo fees"
+        },
+        {
+          "text": "hoa fee"
+        }
+      ],
+      "description": "Retrieve information about condo fees"
+    },
+    {
+      "intent": "parking_pass",
+      "examples": [
+        {
+          "text": "I would like to request an overnight parking pass"
+        },
+        {
+          "text": "I would like to request an temporary parking pass"
+        }
+      ],
+      "description": "To request an overnight parking pass"
+    },
+    {
+      "intent": "maintenance_issue",
+      "examples": [
+        {
+          "text": "I would like to report a maintenance issue"
+        },
+        {
+          "text": "maintenance"
+        },
+        {
+          "text": "I'd like to report a maintenance issue"
+        },
+        {
+          "text": "report maintenance"
+        }
+      ],
+      "description": "To report a maintenance issue"
+    },
+    {
+      "intent": "condo_rules",
+      "examples": [
+        {
+          "text": "Do you have information about our condo rules?"
+        }
+      ],
+      "description": "To retrieve information about the rules the owners live by"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "fee",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "schedule",
+          "synonyms": [
+            "due date",
+            "due dates"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "cost of living",
+          "synonyms": [
+            "total cost",
+            "annual fee"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "fees",
+          "synonyms": [
+            "fees",
+            "price",
+            "amount"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-person",
+      "values": []
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "response",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "yes",
+          "synonyms": [
+            "sure",
+            "please",
+            "do it"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "no",
+          "synonyms": [
+            "don't",
+            "forget",
+            "forget about it"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_12_1550970671110",
+      "metadata": {},
+      "variable": "$c_person",
+      "dialog_node": "slot_33_1550975914595",
+      "previous_sibling": "handler_32_1550975914575"
+    },
+    {
+      "type": "slot",
+      "parent": "node_12_1550970671110",
+      "variable": "$time",
+      "dialog_node": "slot_36_1550976000199",
+      "previous_sibling": "slot_41_1550976045895"
+    },
+    {
+      "type": "slot",
+      "parent": "node_12_1550970671110",
+      "variable": "$number",
+      "dialog_node": "slot_44_1550976068408",
+      "previous_sibling": "slot_36_1550976000199"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_12_1550970671110",
+      "metadata": {},
+      "variable": "$date",
+      "dialog_node": "slot_41_1550976045895",
+      "previous_sibling": "slot_33_1550975914595"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter Date, Time, unit and the person involved"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_12_1550970671110",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_32_1550975914575",
+      "previous_sibling": "node_47_1550976316864"
+    },
+    {
+      "type": "frame",
+      "title": "User Input",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_12_1550970671110",
+      "metadata": {},
+      "conditions": "true",
+      "dialog_node": "node_47_1550976316864",
+      "digress_out": "allow_all",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_55_1550976712942",
+      "event_name": "focus",
+      "dialog_node": "handler_57_1550976712942",
+      "previous_sibling": "handler_56_1550976712942"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_55_1550976712942",
+      "context": {
+        "c_person": "@sys-person"
+      },
+      "conditions": "@sys-person",
+      "event_name": "input",
+      "dialog_node": "handler_56_1550976712942"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Do you remember when?"
+      },
+      "parent": "slot_41_1550976045895",
+      "event_name": "focus",
+      "dialog_node": "handler_43_1550976045895",
+      "previous_sibling": "handler_42_1550976045895"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_41_1550976045895",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_42_1550976045895"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What time?"
+      },
+      "parent": "slot_36_1550976000199",
+      "event_name": "focus",
+      "dialog_node": "handler_38_1550976000199",
+      "previous_sibling": "handler_37_1550976000199"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_36_1550976000199",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_37_1550976000199"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Do you remember when it happened?"
+      },
+      "parent": "slot_49_1550976410768",
+      "event_name": "focus",
+      "dialog_node": "handler_51_1550976410768",
+      "previous_sibling": "handler_50_1550976410768"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_49_1550976410768",
+      "context": {
+        "c_date": "@sys-date"
+      },
+      "metadata": {},
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_50_1550976410768"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What time was it?"
+      },
+      "parent": "slot_52_1550976418879",
+      "event_name": "focus",
+      "dialog_node": "handler_54_1550976418879",
+      "previous_sibling": "handler_53_1550976418879"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_52_1550976418879",
+      "context": {
+        "c_time": "@sys-time"
+      },
+      "metadata": {},
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_53_1550976418879"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_33_1550975914595",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_35_1550975914595",
+      "previous_sibling": "handler_34_1550975914595"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_33_1550975914595",
+      "context": {
+        "c_person": "@sys-person"
+      },
+      "metadata": {},
+      "conditions": "@sys-person",
+      "event_name": "input",
+      "dialog_node": "handler_34_1550975914595"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1551301668927",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1551301668927",
+      "previous_sibling": "handler_3_1551301668927"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1551301668927",
+      "event_name": "input",
+      "dialog_node": "handler_3_1551301668927"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "Welcome",
+      "metadata": {},
+      "variable": "$person",
+      "dialog_node": "slot_6_1551378878988"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_58_1550976731183",
+      "event_name": "focus",
+      "dialog_node": "handler_60_1550976731183",
+      "previous_sibling": "handler_59_1550976731183"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_58_1550976731183",
+      "context": {
+        "c_unit": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_59_1550976731183"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I think you should set a reminder for this. At $condo the HOA fee is due every 10th of January, April, July and October"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1550962775266",
+      "context": {
+        "condo": "Bent Tree Gardens West"
+      },
+      "metadata": {},
+      "conditions": "@fee:schedule",
+      "dialog_node": "node_11_1550965199338",
+      "previous_sibling": "node_10_1550965143621"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oh my God! You will need to save money. The cost of living in here is about \\$$cost_of_living by year. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1550962775266",
+      "context": {
+        "cost_of_living": 4900
+      },
+      "metadata": {},
+      "conditions": "@fee:(cost of living)",
+      "dialog_node": "node_10_1550965143621",
+      "previous_sibling": "node_9_1550965020708"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Based on the budget for this year the HOA fee is \\$$fee_value and it is due $fee_freq"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1550962775266",
+      "context": {
+        "fee_freq": "quarterly",
+        "fee_value": "874"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "@fee:fees",
+      "dialog_node": "node_9_1550965020708",
+      "digress_out": "allow_all"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Hi! My name is Nina. What should I call you?"
+      },
+      "parent": "slot_6_1551378878988",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1551378878988",
+      "previous_sibling": "handler_7_1551378878988"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_6_1551378878988",
+      "context": {
+        "person": "@sys-person"
+      },
+      "conditions": "@sys-person",
+      "event_name": "input",
+      "dialog_node": "handler_7_1551378878988"
+    },
+    {
+      "type": "slot",
+      "parent": "node_9_1550965020708",
+      "dialog_node": "slot_2_1551301668927",
+      "previous_sibling": "handler_1_1551301668906"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_9_1550965020708",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1551301668906"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Which unit?"
+      },
+      "parent": "slot_44_1550976068408",
+      "event_name": "focus",
+      "dialog_node": "handler_46_1550976068408",
+      "previous_sibling": "handler_45_1550976068408"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_44_1550976068408",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_45_1550976068408"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_47_1550976316864",
+      "metadata": {},
+      "variable": "$c_unit",
+      "dialog_node": "slot_58_1550976731183",
+      "previous_sibling": "slot_55_1550976712942"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_47_1550976316864",
+      "metadata": {},
+      "variable": "$c_time",
+      "dialog_node": "slot_52_1550976418879",
+      "previous_sibling": "slot_49_1550976410768"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_47_1550976316864",
+      "metadata": {},
+      "variable": "$c_person",
+      "dialog_node": "slot_55_1550976712942",
+      "previous_sibling": "slot_52_1550976418879"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_47_1550976316864",
+      "event_name": "focus",
+      "dialog_node": "handler_48_1550976410760",
+      "previous_sibling": "slot_58_1550976731183"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_47_1550976316864",
+      "metadata": {},
+      "variable": "$c_date",
+      "dialog_node": "slot_49_1550976410768"
+    },
+    {
+      "type": "standard",
+      "title": "Pest control schedule a visit",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "All right! Let's set you up. \n\nDo you want schedule a visit with the Pest Control company?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#pest_control",
+      "dialog_node": "node_17_1550971798790",
+      "previous_sibling": "node_16_1550971631026"
+    },
+    {
+      "type": "standard",
+      "title": "Report a maintenance issue",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You can count on us to solve your problem USER_NAME. You will need to tell me the issue in detail.\n\nGo ahead! Please describe the maintenance issue or damage that needs to be repaired. Please indicate in your request the BLD and/or FACILITY or AMENITY”."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#maintenance_issue",
+      "dialog_node": "node_13_1550970899773",
+      "previous_sibling": "node_12_1550970671110"
+    },
+    {
+      "type": "standard",
+      "title": "Security information",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It seems you are having a problem and you need to contact our security guard. Here on CONDO we have different people at different time shifts. You only need to make a call to:\n\nPHONE"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#security_info",
+      "dialog_node": "node_14_1550971420021",
+      "previous_sibling": "node_13_1550970899773"
+    },
+    {
+      "type": "standard",
+      "title": "Rules owners live by",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Here at CONDO, the rules we live by revolve around a violent-free and drug-free environment. \n\nThese have been established to ensure maximum enjoyment of the neighborhood by all residents, protect the investment of the Homeowner and make the neighborhood, as a whole a place where owners take pride in the property"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#condo_rules",
+      "dialog_node": "node_15_1550971480140",
+      "previous_sibling": "node_14_1550971420021"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I can help you with a lot of services. I can inform you about fees, security and/or rules we live by. But also, I can help you to file a complaint, to report a maintenance problem and/or to request an overnight parking pass. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#list_options",
+      "dialog_node": "node_9_1551379378620",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "File a complaint",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "So sorry to hear that from you USER_NAME. You will need to tell me what happened and give me as much details as you can remember related to the incident. Lets start! Please tell me what happened and make sure you inform the DATE, TIME, UNIT and/or RESIDENT was involved."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#file_complaint",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_12_1550970671110",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_6_1550962775266"
+    },
+    {
+      "type": "standard",
+      "title": "HOA fees",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oh! I see. It looks like you wanna know about our fees. Here are some services that I am be able to answer you today. Say fee, cost of living or schedule."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#hoa_fees",
+      "dialog_node": "node_6_1550962775266",
+      "previous_sibling": "node_9_1551379378620"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_17_1550971798790"
+    },
+    {
+      "type": "standard",
+      "title": "Temporary parking pass",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oh sure! It seems you need a overnight parking pass. I'll only need the information about the vehicle. Please inform the color, brand, model, and license plate. Below is an example:\n\nYou can say: Black Audi A3, license plate IIV W34 "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#parking_pass",
+      "dialog_node": "node_16_1550971631026",
+      "previous_sibling": "node_15_1550971480140"
+    },
+    {
+      "type": "frame",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello $person. How may I help you today?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "Welcome",
+      "digress_out": "allow_all",
+      "digress_out_slots": "not_allowed"
+    }
+  ],
+  "workspace_id": "f0d181b2-7319-4bb2-aba9-6e2859e57c61",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Training"
+}
